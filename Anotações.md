@@ -169,3 +169,32 @@
         
     }
     ```
+
+
+
+### Core Modules
+
+- **`http`**
+  - **Cria servidores HTTP;**
+  - **Por exemplo, podemos receber uma requisição e enviar um código HTML;**
+  - **A aplicação deve ficar rodando, para podermos acessar o nosso servidor;**
+- **`path`**
+  - **Nos possibilita a extração de diversas informações sobre caminhos e arquivos (nome do diretório, do arquivo, extensão do arquivo, etc.);**
+- **`fs`**
+  - **Utilizado para trabalhar com arquivos e diretórios;**
+  - **Podemos ler e escrever em arquivos;**
+  - **Utilização interessante: logs do sistema;**
+- **`url`**
+  - **Utilizado para "decompor" uma URL;**
+  - **Podemos resgatar: `host`, `path`, `search`, `query`, etc;**
+
+- **`os`**
+  - **Nos possibilita a extração das informações do do sistema operacional;**
+
+
+
+### Rotas
+
+- **São as "páginas" que acessamos nos sites;**
+- **Através do Core Modules, podemos criar um sistema de roteamento;**
+- **Ideia: identificar os arquivos acessados pela URL e retorná-los (se existirem);**
