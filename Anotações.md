@@ -339,3 +339,126 @@
 - **Forma de nos defendermos de `SQL Injection`;**
 - **Podemos utilizar interrogações ao invés de valores e substituir através de um segundo passo, para a `query` ser executada corretamente;**
   - **Essa técnica deve ser utilizada em qualquer programa que vá para a produção;**
+
+
+
+### Sequelize com Node.js
+
+#### ORM
+
+- **Object Relational Mapper (framework);**
+  - **Abstrai a complexidade das `queries`, para trabalharmos com métodos (ao invés de criarmos as `queries`, teremos "métodos prontos" que nos ajudam a utilizar `queries` em determinada tabela);**
+  - **Nos concentramos na regra de negócios e não nos comandos SQL;**
+- **Uma ORM muito utilizada para Node.js, é a Sequelize;**
+- **Em alguns casos, uma ORM pode trazer prejuízos de performance;**
+  - **A `query` pura executa mais rapidamente do que a ORM;**
+  - **E temos código "exagerado", que não evemos por baixo dos panos;**
+
+
+
+#### Sequelize
+
+- **Uma ORM para Node.js (pacote externo);**
+- **Baseada em promises (then, catch);**
+- **Integração com vários bancos relacionas (a exempldo do MySQL);**
+- **Precisaremos sempre criar um Model, que é o reflexo da nossa tabela em uma classe;**
+- **Para instalar o Sequelize, temos o comando: `npm i sequelize`;**
+- **Para conectar, precisaremos dos mesmos dados que no pacote `mysql`: `host`, `user`, `password` e o `database`;**
+  - **Instanciado a classe Sequelize, podemos checar a conexão com o método `authenticate`;**
+  - **OBS.: em caso de erro (`Please install mysql2 package manually`): ` npm install mysql2` (o pacote do sequelize necessita desse pacote, para funcionar);**
+
+
+
+#### Model
+
+- **Para criar um Model, precisaremos instanciar uma classe que representará uma tabela (como no sequelize, não trabalhamos com `queries`,  linkamos as tabelas a partis dos models que criamos);**
+  - **Por exemplo, um Model User, cria uma nova tabela chamada users;**
+  - **Podemos colocar os campos e os tipos dele, como propriedade do Model;**
+  - **Futuramente, ele será utilizado para as operações entre aplicações e banco;**
+  - **O método `sync` faz a criação das tabelas baseadas nos models;**
+
+
+
+#### Inserindo dados
+
+-  **Para inserir um dado, precisaremos do Model que criamos (iremos importar ele no arquivo de execução do comando);**
+  - **O método a ser utilizado é o `create`;**
+  - **Ele leva como parâmetro, todos os campos e insere o registro na tabela;**
+
+
+
+#### Lendo dados
+
+- **Para ler os dados de uma tabela, utilizamos o método `findAll`;**
+  - **Ele também requer o model;**
+  - **Os dados vêm em um objeto especial e para transformá-lo em um array de objetos, temos que inserir o parâmetro `raw`, com o valor `true`;**
+
+
+
+#### WHERE no sequelize
+
+- **Para filtrar dados com o sequelize, utilizando o `WHERE`, precisaremos inserir um novo parâmetro chamado `where` (um objeto onde colocamos as propriedades e valores que queremos filtrar);**
+  - **Para retornar apenas um resultado, podemos utilizar o método `findOne`;**
+
+
+
+#### Removendo itens
+
+- **Para remover itens, utilizamos o método `destroy`;**
+  - **A função fica semelhante a função de resgatar/filtrar um usuário;**
+  - **Só que ele será um `POST`, onde efetuaremos a remoção e depois realizamos o redirecionamento;**
+  - **Também precisaremos criar um formulário no front-end;**
+
+
+
+#### Editando itens
+
+- **Primeiro passo:**
+  - **Resgatar os dados a serem editados;**
+    - **Com isso, podemos preencher o formulário, para depois fazer a atualização;**
+    - **Vamos utilizar o método `findOne` e fazer o preenchimento do form na nossa view;**
+
+- **Segundo passo:**
+  - **Para realizar a `query` de `UPDATE`, vamos utilizar o método `update` do sequelize;**
+    - **Nele, passamos o objeto atualizado do item;**
+    - **Além de filtrarmos por meio do atributo `where`, que item vamos atualizar;**
+
+
+
+#### Recriando tabelas
+
+- **Podemos forçar a recriação das tabelas;**
+  - **No método `sync`, onde são sincronizados os models e as tabelas, vamos colocar: `force: true`;**
+  - **Os dados serão perdidos neste processo;**
+
+
+
+#### Relacionamentos
+
+- **Em bancos relacionais, podemos criar relacionamentos entre as tabelas;**
+  - **Precisaremos crias pelos menos, dois models, para trabalhar isso no sequelize;**
+  - **Em seguida, precisaremos inserir um método de relacionamento, em algum dos models que vai criar a relação;**
+  - **Após o `sync`, uma coluna que faz a relação entre as tabelas, será criada (representandoa assim, a `FOREIGN KEY`);**
+
+
+
+#####  Adicionando dados relacionados
+
+- **Para adicionar um dado relacionado, precisaremos (além do que já foi visto), passar o id do item que o relaciona;**
+  - **Isso pode ser feito com um input do tipo `hidden`, dentro do `form` que contém os dados do novo item e enviamos para uma nova rota do nosso sitema;**
+
+
+
+##### Resgatando dados relacionados
+
+- **Para isso, temos de definir as relações entre os models;**
+- **Depois utilizaremos o operador `include` com o nome do model, onde estamos resgatando os dados;**
+  - **Isso faz com que os registros associados, também venham na relação;**
+  - **Como há dados relacionados, devemos remover o `raw`;**
+
+
+
+##### Removendo dados relacionados
+
+- **Para remover itens relacionados, utilizaremos aquilo que já foi visto: criaremos um formulário que envia o id do item e uma rota que recebe estas informações e executa a remoção, através do método `destroy`;**
+
