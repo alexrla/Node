@@ -198,3 +198,147 @@
 - **São as "páginas" que acessamos nos sites;**
 - **Através do Core Modules, podemos criar um sistema de roteamento;**
 - **Ideia: identificar os arquivos acessados pela URL e retorná-los (se existirem);**
+
+
+
+### Integração - Node.js e MySQL
+
+#### Bancos Relacionais
+
+- **São constituídos por algumas entidades:**
+  - **Banco de dados: banco que guardar os dados;**
+  - **Tabelas: onde categorizamos os dados e os inserimos;**
+  - **Colunas: onde separamos os dados em uma tabela;**
+  - **Dados: o que é inserido, modificado, atualizado e removido de uma tabela;**
+  - **Relacionamentos: ligações entre as tabelas;**
+
+
+
+#### MySQL
+
+- **SGBD (Sistema Gerenciador de Banco de Dados);**
+- **Nos ajudar a trabalhar com bancos relacionais;**
+- **O mais utilizado, atualmente, em sistemas e aplicações;**
+
+
+
+#### Instalação do MySQL no Ubuntu
+
+**1 - `sudo apt update` (atualizando os pacotes);**
+
+**2 - `sudo apt install mysql-server`;**
+
+**3 - `sudo mysql_secure_installation`;**
+
+**4 - `systemctl status mysql.service` (testando o serviço);**
+
+**5 - `sudo mysql -u root` (acessando o MySQL);**
+
+​	**5.1 - Ou: `mysql -u root -p`;**
+
+**6 - `exit` (sair);**
+
+
+
+#### Instalação do Workbench
+
+- **Ferramenta do MySQL para a visualização de dados;**
+
+- **Através dela, também podemos criar diagramas relacionais;**
+
+- **Instalação:**
+
+  **1 - `sudo apt update` (atualizando os pacotes);**
+
+  **2 - `lsb_release -rs` (descobrir a versão do sistema);**
+
+  **3 - `https://downloads.mysql.com/archives/workbench/` (baixar o arquivo);**
+
+  **4 - `sudo dpkg -i nome_do_arquivo.deb` (instalar o arquivo baixado);**
+
+  **5 - `sudo apt-get -f install` ( instalar as dependências e finalizar a instalação);**
+
+
+
+#### Instalação HeidiSQL
+
+- **Alternativa ao Workbench (outra ferramenta de visualização de dados, com requisitos menores para instalar e rodar);**
+
+- **Funciona para a maioria dos SGBD's relacionais;**
+
+- **Instalação:**
+
+  **1 - `sudo apt update`;**
+
+  **2 - `sudo apt install snapd` (caso o `snap` não esteja instalado);**
+
+  **3 - `sudo snap install heidisql-wine --beta`;**
+
+
+
+#### Intregação - Node.js e MySQL
+
+- **Antes de tudo, precisaremos instalar o driver, um pacote chamado `mysql`, através do NPM;**
+- **Em seguida, devemos conectar o nosso banco de dados (vamos inserir informações como: `host`, `user`, `password` e o `banco`);**
+- **`npm i mysql`;**
+
+
+
+#### Criando tabela
+
+- **Para manipular os dados, precisaremos criar tabelas e isso será feito via o Workbench;**
+- **Para selecionar o banco, damos dois cliques nele e esperamos que ele fique com o texto em negrito;**
+
+
+
+#### Inserindo dados
+
+- **Para inserir dados, será necessário criar e executar uma `query`;**
+  - **A `query` em si é uma string, seguindo os padrões MySQL;**
+- **Já para executar, iremos utilizar o método `query` do pacote `mysql`;**
+- **OBS.: para inserir os dados, faremos o uso da instrução `INSERT`;**
+
+
+
+#### Resgatando dados
+
+- **Também precisaremos criar uma `query`, que será um `SELECT`;**
+  - **Poderemos escolher quais dados serão retornados, através das colunas;**
+- **Agora, para resgatar um dado em específico, precisaremos utilizar o `WHERE` (desta forma, podemos filtrar por uma coluna e um valor);**
+
+
+
+#### Editar dados
+
+- **Primeiro passo:**
+  - **Resgatar o dado;**
+    - **Normalmente, preenchemos o formulário de dados com os dados que foram resgatados (SELECT). Isso faz com que o usuário lembre dos dados cadastrados e possa escolher o que editar;**
+- **Último passo:**
+  - **Criamos uma nova rota com o verbo `POST` e então fazemos uma `query` de `UPDATE` para processar a atualização (pegamos os dados que vieram no `POST`, do "body" da nossa requisição e colocamos esses dados na nossa `query` de `UPDATE`);**
+  - **Também precisaremos passar o id no nosso formulário de exemplo;**
+
+
+
+#### Remover itens
+
+- **Utilizamos a `query` `DELETE`;**
+  - **Precisaremos enviar para a rota, um `POST` com o id do dado a ser removido;**
+
+
+
+#### Connection Pool
+
+- **Recurso para otimizar as conexões, criando um cache e permitindo sua reutilização (retorna muito mais rápido a resposta);**
+  - **O driver `mysql` tem este recurso desenvolvido, basta aplicarmos;**
+  - **E com este recurso, podemos controlar as conexões abertas, fechando assim, as que se tornam inativas;**
+
+
+
+#### Preparando querys
+
+- **Forma de nos defendermos de `SQL Injection`;**
+- **Podemos utilizar interrogações ao invés de valores e substituir através de um segundo passo, para a `query` ser executada corretamente;**
+  - **Essa técnica deve ser utilizada em qualquer programa que vá para a produção;**
+
+
+
