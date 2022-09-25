@@ -2,6 +2,9 @@ import express from "express";
 import exphbs from "express-handlebars";
 import mysql from "mysql";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 
 app.engine("handlebars", exphbs.engine());
@@ -106,12 +109,11 @@ app.post("/books/insertbook", (req, res) => {
 
 });
 
-
 const conn = mysql.createConnection({
-    host: "hostname",
-    user: "username",
-    password: "user_password",
-    database: "name_database"
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME
 });
 
 conn.connect((error) => {

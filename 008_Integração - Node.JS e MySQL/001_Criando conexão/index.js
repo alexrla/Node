@@ -4,6 +4,10 @@ import exphbs from "express-handlebars";
 // Importando o módulo mysql
 import mysql from "mysql";
 
+// Utilizando dotenv no projeto
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 
 app.engine("handlebars", exphbs.engine());
@@ -19,10 +23,10 @@ app.get("/", (req, res) => {
 
 // Criando variável de conexão
 const conn = mysql.createConnection({
-    host: "hostname",
-    user: "username",
-    password: "user_password",
-    database: "name_database"
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME
 });
 
 // Estabelecendo a conexão

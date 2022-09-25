@@ -279,7 +279,7 @@
 #### Intregação - Node.js e MySQL
 
 - **Antes de tudo, precisaremos instalar o driver, um pacote chamado `mysql`, através do NPM;**
-- **Em seguida, devemos conectar o nosso banco de dados (vamos inserir informações como: `host`, `user`, `password` e o `banco`);**
+- **Em seguida, devemos conectar o nosso banco de dados (vamos inserir informações como: `host`, `user`, `password` e o `database`);**
 - **`npm i mysql`;**
 
 
@@ -334,11 +334,8 @@
 
 
 
-#### Preparando querys
+#### Preparando queries
 
 - **Forma de nos defendermos de `SQL Injection`;**
 - **Podemos utilizar interrogações ao invés de valores e substituir através de um segundo passo, para a `query` ser executada corretamente;**
   - **Essa técnica deve ser utilizada em qualquer programa que vá para a produção;**
-
-
-
