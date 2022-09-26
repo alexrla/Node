@@ -462,3 +462,81 @@
 
 - **Para remover itens relacionados, utilizaremos aquilo que já foi visto: criaremos um formulário que envia o id do item e uma rota que recebe estas informações e executa a remoção, através do método `destroy`;**
 
+
+
+### MVC
+
+- **Model View Controller;**
+- **Padrão de arquitetura de software, que deixa nossas aplicações mais organizadas;**
+  - **A aplicação é dividida em camadas;**
+  - **Teremos uma nova estrutura de arquivos e pastas;**
+  - **A aplicação obedece um novo fluxo, que se repete para todas as ações;**
+- **Aplicações em MVC tendem a ter uma manutenção/evolução mais fácil;**
+
+
+
+#### Model
+
+- **Camada onde vamos interagir com o banco de dados;**
+  - **Normalmente, interage com os arquivos do Controller;**
+- **Responsável por resgatar, atualizar, remover e criar dados;**
+  - **É comum que cada tabela seja um Model, assim como vimos no setup do Sequelize;**
+- **Controlam a arquitetura do sistema (é fácil entender a regra de negócios, analisando eles);**
+
+
+
+#### View
+
+- **Camada onde iremos apresentar os dados que estão no banco;**
+- **Geralmente, interage com o Controller;**
+- **Nela também temos a interação com o usuário, como formulários para inserir dados no sistema;**
+- **É normal não haver lógica/regra de negócios na view, ou o mínimo possível;**
+- **Normalmente, a exibição é feita através do HTML;**
+
+
+
+#### Controller
+
+- **Onde ocorrer a interação entre Model e View;**
+  - **Nele podemos definir qual view será impressa;**
+  - **Processar dados que foram enviados para o banco ou para a view;**
+- **Os controller terão um código semelhante ao das rotas que já vimos;**
+
+
+
+#### Estrutura MVC
+
+- **`controllers`: pasta onde ficam os arquivos de Controller ;**
+- **`models`:  pasta onde ficam os arquivos de Model;**
+- **`views`: pasta onde ficam os arquivos de views ;**
+- **`routes`: pasta onde ficam os arquivos de rotas ;**
+- **`index.js`:  arquivo de inicialização da aplicação;**
+
+
+
+#### Criando model
+
+- **Criado dentro da pasta `models`;**
+- **Necessário sincronizar para criar a tabela (vamos importar no arquivo `index.js`);**
+
+
+
+#### Criando controller
+
+- **Criado dentro da pasta `controllers`;**
+  - **Classe que contém as funções com a lógica de cada rota;**
+  - **Algumas só encaminharão as views;**
+  - **Outras vão processar dados e passá-los para os Models (por isso, importamos o Model que o controller utiliza);**
+
+
+
+#### Criando rotas
+
+- **Criadas com a ajuda do `router`;**
+  - **Cada arquivo será responsável por um controller;**
+  - **Em cada rota utilizamos uma das funções do Controller;**
+  - **Por isso, importamos o controller responsável pela lógica das rotas;**
+  - **O router precisa ser importado no index da aplicação;**
+
+
+
