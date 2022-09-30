@@ -540,3 +540,80 @@
 
 
 
+### Integração - Node.js e MongoDB
+
+#### NoSQL
+
+- **Bancos de dados focados em documentos (`documents`);**
+- **A modelagem de dados com relacionamentos, é opcional;**
+- **Não utilizamos `queries` e sim métodos de classes para trabalhar com os dados;**
+- **As tabelas não existem, temos as coleções (`collections`);**
+  - **Não precisamos definir a estrutura da coleção previamente;**
+
+
+
+#### MongoDB
+
+- **Banco NoSQL;**
+  - **Também é um banco de dados orientado a documento;**
+  - **Os dados ficam salvos em estruturas parecidas com JSON (o BSON);**
+- **Diferente do SQL, temos índices primários e secundários;**
+
+- **Utilizamos um driver, semelhante ao MyQL e Sequelize, para conectar a aplicação com o MongoDB;**
+
+
+
+#### Principais entidades
+
+- **Database: onde ficam as coleções (`collections`) e os dados;**
+- **Collections: são como as tabelas nos bancos relacionais, nelas vamos inserir os dados;**
+  - **Podem ser criadas livremente, a qualquer momento, e não possuem colunas fixas para os dados;**
+- **Documents: são os dados (no MongoDB, os dados possuem essa nomenclatura);**
+
+
+
+#### MongoDB e JSON
+
+- **O tipo de dado inserido na "tabela" é o `BSON` (uma variação de `JSON`);**
+  - **O `BSON` é semelhante ao `JSON`, porém com alguns recursos a mais;**
+  - **A forma de criar um `BSON`, é semelhante a forma de criar um `JSON`;**
+
+
+
+#### Conectando o MongooDB ao Node.js
+
+- **Primeiramente, devemos instalar o drive do MongoDB, um pacote NPM de nome `mongodb`;**
+- **Em seguida, criamos a conexão, baseada em uma URL, com o protocolo: `mongodb://...`;**
+  - **Isso é feito através da classe `MongoClient`;**
+
+
+
+#### Inserindo dados
+
+- **Utilizamos o método `insertOne`;**
+
+
+
+#### Resgatando dados
+
+- **Utilizamos o método `find`**;
+  - **Os dados vem em um cursor e para utilizá-los, realizamos a conversão deles para um array, através do método `toArray`;**
+
+
+
+#### Resgatando dados (de forma individual)
+
+- **Utilizamos o método `findOne`;**
+
+
+
+#### Removendo dados
+
+- **Utilizamos o método `deleteOne`;**
+
+
+
+#### Editando dados
+
+- **Utilizamos o método `updateOne`;**
+

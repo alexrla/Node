@@ -1,0 +1,44 @@
+* {
+    background-color: #222;
+
+    color: #FFF;
+
+    font-family: Helvetica;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+/* Navbar */
+#navbar {
+    align-items: center;
+
+    border-bottom: 1px solid #333;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 1em;
+
+    padding: 1.2em 1.4em;
+}
+
+#navbar ul {
+    display: flex;
+
+    list-style: none;
+}
+
+#navbar ul li {
+    margin-left: 1em;
+}
+
+#navbar ul li a {
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: 0.5s;
+}
