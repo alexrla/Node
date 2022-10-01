@@ -617,3 +617,72 @@
 
 - **Utilizamos o método `updateOne`;**
 
+
+
+### Mongoose
+
+#### ODM
+
+- **Acrônimo para Object Data Mapping (mapeamento de dados por objeto);**
+- **No MongoDB, utiliza-se ODMs, para deixar mais ágil, o processo de trabalho com os dados;**
+  - **Basicamente, temos um Model que ficará responsável pela iteração com um banco;**
+- **A ODM mais utilizada para o MongoDB é a Mongoose;**
+- **OBS.: ORM e ODM possuem funções e utilizações muito semelhantes;**
+
+
+
+#### Mongoose
+
+- **ODM mais utilizada para MongoDB;**
+  - **Declaramos um Model, que faz interações com a coleção que ele corresponde;**
+  - **Nesse Model, definimos os dados e seus tipos (como estamos esperando que a coleção fique);**
+  - **Isso se assemelha ao SQL e ajuda na organização/manutenção;**
+- **Assim como nas ORMs, temos métodos prontos para a interação com o DB;**
+
+
+
+#### Instalando o Mongoose
+
+- **O nome do pacote é `mongoose`: `npm i mongoose`;**
+
+
+
+#### Schema
+
+- **"Esqueleto do nosso elemento" (estrutura do model - os campos da coleção), a ser inserido na coleção;**
+
+
+
+#### Inserindo dados
+
+- **Para inserir dados, temos o método `save` do Mongoose;**
+
+
+
+#### Resgatando dados
+
+- **Para resgatar dados, temos o método `find` do Mongoose;**
+  - **É necessário utilizar o método `lean`, para formatar os dados, de forma que o Handlebars consiga utilizar;**
+
+
+
+#### Resgatando dados (de forma individual)
+
+- **Para encontrar um único item, utilizamos o método `findById` do Mongoose;**
+  - **Não será necessário converter o id para o padrão do MongoDB, o Mongoose já faz isso;**
+  - **E mais uma vez, será necessário a utilização do método `lean`;**
+
+
+
+#### Editando dados
+
+- **Primeiramente, para termos o formulário de edição preenchido com os dados que já tinham sido salvos, vamos utilizar o método `findById` mais uma vez;**
+  - **O método `lean` nos ajuda a receber os dados para o Handlebars;**
+- **Por último, utilizamos o método `updateOne`, também do Mongoose, passando um filtro e um objeto, contendo os dados da atualização;**
+
+
+
+#### Removendo dados
+
+- **Para remover um dados, utilizamos o método `deleteOne` do Mongoose (como argumento, passamos um filtro, que corresponde ao id do item - `_id`);**
+
