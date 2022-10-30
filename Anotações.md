@@ -12,6 +12,18 @@
 
 
 
+### Client-server (cliente-servidor)
+
+- **O servidor é uma aplicação que ofereve diversos serviços, que podem ser requisitados por outras aplicações;**
+- **Já os clientes, são aplicações que podem requisitar serviços a uma aplicação servidora;**
+- **Aplicações clientes e aplicações servidoras, geralmente, estão em máquians distintas e se comunicam através de uma rede de computadores;**
+  - **No estágio de desenvolvimento dessas aplicações, é comum ambas estarem em uma mesma máquina;**
+- **Para que seja possível a comunicaçãoentre cliente e servidor, é necessário que ambas sigam algumas regras de "troca de mensagens" (um protocolo de comunicação);**
+  - **Do lado do cliente, temos os _browsers_ (navegadores) e do lado do servidor, temos os servidores web (ou servidores http);**
+  - **A aplicação do lado do cliente, é responsável por realizar uma requisição (_request_), enquanto a aplicação servidora recebe essa solicitação (_request_) e faz todas as tratativas necessárias. Em seguida, a aplicação servidora envia uma resposta (_response_) para a aplicação cliente. A aplicação cliente (_browsers_) recebe essa resposta, processa e exibe os dados em tela (;**
+
+
+
 ### NPM
 
 - **Gerenciador de pacotes do Node;**
